@@ -6,25 +6,312 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>905</width>
+    <height>586</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
+  <property name="styleSheet">
+   <string notr="true">background-color: black;
+</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QSlider" name="progress_slider">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>450</y>
+      <width>891</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QSlider::groove:horizontal{
+	height: 2px;
+	width: 850px;
+	background-color: white;
+}
+QSlider::handle:horizontal{
+	height: 2px;
+	width: 25px;
+	border: solid 1px red;
+	border-radius: 15%;
+	background-color: yellow;
+}</string>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QWidget" name="horizontalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>490</y>
+      <width>181</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="buttons_container">
+     <item>
+      <widget class="QPushButton" name="rewind_button">
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+	height: 50px;
+	width: 50px;
+	border-radius: 25px;
+	background-color: white;
+}
+
+QPushButton:hover{
+	height: 50px;
+	width: 50px;
+	border-radius: 25px;
+	background-color: grey;
+}		</string>
+       </property>
+       <property name="text">
+        <string>Rewind</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="play_button">
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+	height: 50px;
+	width: 50px;
+	border-radius: 25px;
+	background-color: lightgreen;
+}
+
+QPushButton:hover{
+	height: 50px;
+	width: 50px;
+	border-radius: 25px;
+	background-color: grey;
+}		</string>
+       </property>
+       <property name="text">
+        <string>Play</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="forward_button">
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+	height: 50px;
+	width: 50px;
+	border-radius: 25px;
+	background-color: white;
+}
+
+QPushButton:hover{
+	height: 50px;
+	width: 50px;
+	border-radius: 25px;
+	background-color: grey;
+}		</string>
+       </property>
+       <property name="text">
+        <string>Forward</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="horizontalLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>710</x>
+      <y>490</y>
+      <width>166</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="video_tools_container">
+     <item>
+      <widget class="QPushButton" name="settings_button_2">
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+	height: 50px;
+	width: 50px;
+	border-radius: 25px;
+	background-color: white;
+}
+
+QPushButton:hover{
+	height: 50px;
+	width: 50px;
+	border-radius: 25px;
+	background-color: grey;
+}		</string>
+       </property>
+       <property name="text">
+        <string>Subtitle</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="settings_button">
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+	height: 50px;
+	width: 50px;
+	border-radius: 25px;
+	background-color: white;
+}
+
+QPushButton:hover{
+	height: 50px;
+	width: 50px;
+	border-radius: 25px;
+	background-color: grey;
+}		</string>
+       </property>
+       <property name="text">
+        <string>Setting</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="fullscreen_button">
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+	height: 50px;
+	width: 50px;
+	border-radius: 25px;
+	background-color: white;
+}
+
+QPushButton:hover{
+	height: 50px;
+	width: 50px;
+	border-radius: 25px;
+	background-color: grey;
+}		</string>
+       </property>
+       <property name="text">
+        <string>FullScr</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QPushButton" name="play_button_2">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>490</y>
+      <width>55</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+	height: 50px;
+	width: 50px;
+	border-radius: 25px;
+	background-color: lightgreen;
+}
+
+QPushButton:hover{
+	height: 50px;
+	width: 50px;
+	border-radius: 25px;
+	background-color: grey;
+}		</string>
+    </property>
+    <property name="text">
+     <string>VolMute</string>
+    </property>
+   </widget>
+   <widget class="QSlider" name="volume_slider">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>500</y>
+      <width>160</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QSlider::groove:horizontal{
+	height: 10px;
+	width: 150px;
+	background-color: white;
+}
+QSlider::handle:horizontal{
+	height: 10px;
+	width: 15px;
+	background-color: green;
+}</string>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="jungo_label">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>91</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bahnschrift Condensed</family>
+      <pointsize>20</pointsize>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white;
+background-color: red;
+</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Panel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <property name="text">
+     <string>JUNGO</string>
+    </property>
+   </widget>
+  </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>905</width>
      <height>26</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: grey;</string>
+   </property>
+   <widget class="QMenu" name="menu_Browse">
+    <property name="title">
+     <string>&amp;Browse</string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="actionOpen_Files"/>
+   </widget>
+   <addaction name="menu_Browse"/>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionOpen_Files">
+   <property name="text">
+    <string>Open Files</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
