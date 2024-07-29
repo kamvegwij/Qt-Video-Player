@@ -36,12 +36,12 @@ public:
     QPushButton *forward_button;
     QWidget *horizontalLayoutWidget_2;
     QHBoxLayout *video_tools_container;
-    QPushButton *settings_button_2;
     QPushButton *settings_button;
     QPushButton *fullscreen_button;
-    QPushButton *play_button_2;
+    QPushButton *volume_button;
     QSlider *volume_slider;
     QLabel *jungo_label;
+    QLabel *video_title_label;
     QMenuBar *menubar;
     QMenu *menu_Browse;
 
@@ -102,7 +102,7 @@ public:
 "	height: 50px;\n"
 "	width: 50px;\n"
 "	border-radius: 25px;\n"
-"	background-color: lightgreen;\n"
+"	background-color: white;\n"
 "}\n"
 "\n"
 "QPushButton:hover{\n"
@@ -134,28 +134,10 @@ public:
 
         horizontalLayoutWidget_2 = new QWidget(centralwidget);
         horizontalLayoutWidget_2->setObjectName("horizontalLayoutWidget_2");
-        horizontalLayoutWidget_2->setGeometry(QRect(710, 490, 166, 61));
+        horizontalLayoutWidget_2->setGeometry(QRect(765, 490, 111, 61));
         video_tools_container = new QHBoxLayout(horizontalLayoutWidget_2);
         video_tools_container->setObjectName("video_tools_container");
         video_tools_container->setContentsMargins(0, 0, 0, 0);
-        settings_button_2 = new QPushButton(horizontalLayoutWidget_2);
-        settings_button_2->setObjectName("settings_button_2");
-        settings_button_2->setStyleSheet(QString::fromUtf8("QPushButton{\n"
-"	height: 50px;\n"
-"	width: 50px;\n"
-"	border-radius: 25px;\n"
-"	background-color: white;\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"	height: 50px;\n"
-"	width: 50px;\n"
-"	border-radius: 25px;\n"
-"	background-color: grey;\n"
-"}		"));
-
-        video_tools_container->addWidget(settings_button_2);
-
         settings_button = new QPushButton(horizontalLayoutWidget_2);
         settings_button->setObjectName("settings_button");
         settings_button->setStyleSheet(QString::fromUtf8("QPushButton{\n"
@@ -176,6 +158,7 @@ public:
 
         fullscreen_button = new QPushButton(horizontalLayoutWidget_2);
         fullscreen_button->setObjectName("fullscreen_button");
+        fullscreen_button->setAutoFillBackground(false);
         fullscreen_button->setStyleSheet(QString::fromUtf8("QPushButton{\n"
 "	height: 50px;\n"
 "	width: 50px;\n"
@@ -189,17 +172,18 @@ public:
 "	border-radius: 25px;\n"
 "	background-color: grey;\n"
 "}		"));
+        fullscreen_button->setFlat(false);
 
         video_tools_container->addWidget(fullscreen_button);
 
-        play_button_2 = new QPushButton(centralwidget);
-        play_button_2->setObjectName("play_button_2");
-        play_button_2->setGeometry(QRect(30, 490, 55, 50));
-        play_button_2->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+        volume_button = new QPushButton(centralwidget);
+        volume_button->setObjectName("volume_button");
+        volume_button->setGeometry(QRect(30, 490, 55, 50));
+        volume_button->setStyleSheet(QString::fromUtf8("QPushButton{\n"
 "	height: 50px;\n"
 "	width: 50px;\n"
 "	border-radius: 25px;\n"
-"	background-color: lightgreen;\n"
+"	background-color: white;\n"
 "}\n"
 "\n"
 "QPushButton:hover{\n"
@@ -224,10 +208,10 @@ public:
         volume_slider->setOrientation(Qt::Horizontal);
         jungo_label = new QLabel(centralwidget);
         jungo_label->setObjectName("jungo_label");
-        jungo_label->setGeometry(QRect(10, 10, 91, 41));
+        jungo_label->setGeometry(QRect(10, 20, 141, 31));
         QFont font;
         font.setFamilies({QString::fromUtf8("Bahnschrift Condensed")});
-        font.setPointSize(20);
+        font.setPointSize(15);
         font.setBold(false);
         jungo_label->setFont(font);
         jungo_label->setStyleSheet(QString::fromUtf8("color: white;\n"
@@ -235,6 +219,19 @@ public:
 ""));
         jungo_label->setFrameShape(QFrame::Panel);
         jungo_label->setFrameShadow(QFrame::Raised);
+        jungo_label->setLineWidth(4);
+        jungo_label->setMidLineWidth(6);
+        jungo_label->setAlignment(Qt::AlignCenter);
+        jungo_label->setWordWrap(false);
+        video_title_label = new QLabel(centralwidget);
+        video_title_label->setObjectName("video_title_label");
+        video_title_label->setGeometry(QRect(30, 410, 851, 21));
+        QFont font1;
+        font1.setFamilies({QString::fromUtf8("Bahnschrift Light")});
+        font1.setPointSize(11);
+        font1.setBold(true);
+        video_title_label->setFont(font1);
+        video_title_label->setStyleSheet(QString::fromUtf8("color: white;"));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
@@ -257,14 +254,14 @@ public:
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         actionOpen_Files->setText(QCoreApplication::translate("MainWindow", "Open Files", nullptr));
-        rewind_button->setText(QCoreApplication::translate("MainWindow", "Rewind", nullptr));
-        play_button->setText(QCoreApplication::translate("MainWindow", "Play", nullptr));
-        forward_button->setText(QCoreApplication::translate("MainWindow", "Forward", nullptr));
-        settings_button_2->setText(QCoreApplication::translate("MainWindow", "Subtitle", nullptr));
-        settings_button->setText(QCoreApplication::translate("MainWindow", "Setting", nullptr));
-        fullscreen_button->setText(QCoreApplication::translate("MainWindow", "FullScr", nullptr));
-        play_button_2->setText(QCoreApplication::translate("MainWindow", "VolMute", nullptr));
+        rewind_button->setText(QString());
+        play_button->setText(QString());
+        forward_button->setText(QString());
+        settings_button->setText(QString());
+        fullscreen_button->setText(QString());
+        volume_button->setText(QString());
         jungo_label->setText(QCoreApplication::translate("MainWindow", "JUNGO", nullptr));
+        video_title_label->setText(QCoreApplication::translate("MainWindow", "Kamve-Be-Kind-[Visualiser].mp4", nullptr));
         menu_Browse->setTitle(QCoreApplication::translate("MainWindow", "&Browse", nullptr));
     } // retranslateUi
 
