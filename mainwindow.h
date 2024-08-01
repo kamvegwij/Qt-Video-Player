@@ -2,13 +2,14 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "QFileDialog"
-#include "QtMultimedia"
-#include "QStyle"
-#include "QMediaPlayer"
-#include "QtCore"
-#include "QtWidgets"
+#include <QtMultimedia>
+#include <QtMultimediaWidgets>
+#include <QtCore>
+#include <QtGui>
+#include <QtWidgets>
 #include "QMessageBox"
+#include <QMediaPlayer>
+#include <QAudioOutput>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -47,5 +48,12 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    QMediaPlayer *video_Player;
+    QVideoWidget *video_Widget;
+    QAudioOutput *audioOutput;
+
+    qint64 mDuration;
+    bool is_Paused = true;
+    bool is_Muted = false;
 };
 #endif // MAINWINDOW_H

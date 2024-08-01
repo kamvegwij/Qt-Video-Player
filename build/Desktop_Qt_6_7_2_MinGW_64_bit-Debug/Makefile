@@ -409,6 +409,7 @@ Makefile: ../../JungoVideoPlayer.pro C:/Qt6/6.7.2/mingw_64/mkspecs/win32-g++/qma
 		C:/Qt6/6.7.2/mingw_64/mkspecs/features/yacc.prf \
 		C:/Qt6/6.7.2/mingw_64/mkspecs/features/lex.prf \
 		../../JungoVideoPlayer.pro \
+		C:/Qt6/6.7.2/mingw_64/lib/Qt6MultimediaWidgets.prl \
 		C:/Qt6/6.7.2/mingw_64/lib/Qt6Multimedia.prl \
 		C:/Qt6/6.7.2/mingw_64/lib/Qt6Widgets.prl \
 		C:/Qt6/6.7.2/mingw_64/lib/Qt6Gui.prl \
@@ -756,6 +757,7 @@ C:/Qt6/6.7.2/mingw_64/mkspecs/features/exceptions.prf:
 C:/Qt6/6.7.2/mingw_64/mkspecs/features/yacc.prf:
 C:/Qt6/6.7.2/mingw_64/mkspecs/features/lex.prf:
 ../../JungoVideoPlayer.pro:
+C:/Qt6/6.7.2/mingw_64/lib/Qt6MultimediaWidgets.prl:
 C:/Qt6/6.7.2/mingw_64/lib/Qt6Multimedia.prl:
 C:/Qt6/6.7.2/mingw_64/lib/Qt6Widgets.prl:
 C:/Qt6/6.7.2/mingw_64/lib/Qt6Gui.prl:

@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtGui/QAction>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
@@ -28,7 +29,6 @@ class Ui_MainWindow
 public:
     QAction *actionOpen_Files;
     QWidget *centralwidget;
-    QSlider *progress_slider;
     QWidget *horizontalLayoutWidget;
     QHBoxLayout *buttons_container;
     QPushButton *rewind_button;
@@ -40,7 +40,10 @@ public:
     QPushButton *fullscreen_button;
     QPushButton *volume_button;
     QSlider *volume_slider;
-    QLabel *jungo_label;
+    QGroupBox *video_container;
+    QSlider *progress_slider;
+    QLabel *video_current_time_label;
+    QLabel *video_end_time_label;
     QLabel *video_title_label;
     QMenuBar *menubar;
     QMenu *menu_Browse;
@@ -49,32 +52,16 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(905, 586);
-        MainWindow->setStyleSheet(QString::fromUtf8("background-color: black;\n"
+        MainWindow->resize(909, 588);
+        MainWindow->setStyleSheet(QString::fromUtf8("background-color: #1e272e;\n"
 ""));
         actionOpen_Files = new QAction(MainWindow);
         actionOpen_Files->setObjectName("actionOpen_Files");
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
-        progress_slider = new QSlider(centralwidget);
-        progress_slider->setObjectName("progress_slider");
-        progress_slider->setGeometry(QRect(10, 450, 891, 22));
-        progress_slider->setStyleSheet(QString::fromUtf8("QSlider::groove:horizontal{\n"
-"	height: 2px;\n"
-"	width: 850px;\n"
-"	background-color: white;\n"
-"}\n"
-"QSlider::handle:horizontal{\n"
-"	height: 2px;\n"
-"	width: 25px;\n"
-"	border: solid 1px red;\n"
-"	border-radius: 15%;\n"
-"	background-color: yellow;\n"
-"}"));
-        progress_slider->setOrientation(Qt::Horizontal);
         horizontalLayoutWidget = new QWidget(centralwidget);
         horizontalLayoutWidget->setObjectName("horizontalLayoutWidget");
-        horizontalLayoutWidget->setGeometry(QRect(370, 490, 181, 61));
+        horizontalLayoutWidget->setGeometry(QRect(370, 480, 178, 56));
         buttons_container = new QHBoxLayout(horizontalLayoutWidget);
         buttons_container->setObjectName("buttons_container");
         buttons_container->setContentsMargins(0, 0, 0, 0);
@@ -84,14 +71,14 @@ public:
 "	height: 50px;\n"
 "	width: 50px;\n"
 "	border-radius: 25px;\n"
-"	background-color: white;\n"
+"	background-color: #d2dae2;\n"
 "}\n"
 "\n"
 "QPushButton:hover{\n"
 "	height: 50px;\n"
 "	width: 50px;\n"
 "	border-radius: 25px;\n"
-"	background-color: grey;\n"
+"	background-color: #00d8d6;\n"
 "}		"));
 
         buttons_container->addWidget(rewind_button);
@@ -102,14 +89,14 @@ public:
 "	height: 50px;\n"
 "	width: 50px;\n"
 "	border-radius: 25px;\n"
-"	background-color: white;\n"
+"	background-color: #d2dae2;\n"
 "}\n"
 "\n"
 "QPushButton:hover{\n"
 "	height: 50px;\n"
 "	width: 50px;\n"
 "	border-radius: 25px;\n"
-"	background-color: grey;\n"
+"	background-color: #00d8d6;\n"
 "}		"));
 
         buttons_container->addWidget(play_button);
@@ -120,21 +107,21 @@ public:
 "	height: 50px;\n"
 "	width: 50px;\n"
 "	border-radius: 25px;\n"
-"	background-color: white;\n"
+"	background-color: #d2dae2;\n"
 "}\n"
 "\n"
 "QPushButton:hover{\n"
 "	height: 50px;\n"
 "	width: 50px;\n"
 "	border-radius: 25px;\n"
-"	background-color: grey;\n"
+"	background-color: #00d8d6;\n"
 "}		"));
 
         buttons_container->addWidget(forward_button);
 
         horizontalLayoutWidget_2 = new QWidget(centralwidget);
         horizontalLayoutWidget_2->setObjectName("horizontalLayoutWidget_2");
-        horizontalLayoutWidget_2->setGeometry(QRect(765, 490, 111, 61));
+        horizontalLayoutWidget_2->setGeometry(QRect(765, 480, 117, 61));
         video_tools_container = new QHBoxLayout(horizontalLayoutWidget_2);
         video_tools_container->setObjectName("video_tools_container");
         video_tools_container->setContentsMargins(0, 0, 0, 0);
@@ -144,14 +131,14 @@ public:
 "	height: 50px;\n"
 "	width: 50px;\n"
 "	border-radius: 25px;\n"
-"	background-color: white;\n"
+"	background-color: #d2dae2;\n"
 "}\n"
 "\n"
 "QPushButton:hover{\n"
 "	height: 50px;\n"
 "	width: 50px;\n"
 "	border-radius: 25px;\n"
-"	background-color: grey;\n"
+"	background-color: #00d8d6;\n"
 "}		"));
 
         video_tools_container->addWidget(settings_button);
@@ -163,14 +150,14 @@ public:
 "	height: 50px;\n"
 "	width: 50px;\n"
 "	border-radius: 25px;\n"
-"	background-color: white;\n"
+"	background-color: #d2dae2;\n"
 "}\n"
 "\n"
 "QPushButton:hover{\n"
 "	height: 50px;\n"
 "	width: 50px;\n"
 "	border-radius: 25px;\n"
-"	background-color: grey;\n"
+"	background-color: #00d8d6;\n"
 "}		"));
         fullscreen_button->setFlat(false);
 
@@ -178,65 +165,94 @@ public:
 
         volume_button = new QPushButton(centralwidget);
         volume_button->setObjectName("volume_button");
-        volume_button->setGeometry(QRect(30, 490, 55, 50));
+        volume_button->setGeometry(QRect(30, 480, 51, 51));
         volume_button->setStyleSheet(QString::fromUtf8("QPushButton{\n"
 "	height: 50px;\n"
 "	width: 50px;\n"
 "	border-radius: 25px;\n"
-"	background-color: white;\n"
+"	background-color: #d2dae2;\n"
 "}\n"
 "\n"
 "QPushButton:hover{\n"
 "	height: 50px;\n"
 "	width: 50px;\n"
 "	border-radius: 25px;\n"
-"	background-color: grey;\n"
+"	background-color: #00d8d6;\n"
 "}		"));
         volume_slider = new QSlider(centralwidget);
         volume_slider->setObjectName("volume_slider");
-        volume_slider->setGeometry(QRect(100, 500, 160, 22));
+        volume_slider->setGeometry(QRect(100, 490, 160, 22));
         volume_slider->setStyleSheet(QString::fromUtf8("QSlider::groove:horizontal{\n"
 "	height: 10px;\n"
 "	width: 150px;\n"
-"	background-color: white;\n"
+"	background-color: #d2dae2;\n"
 "}\n"
 "QSlider::handle:horizontal{\n"
 "	height: 10px;\n"
 "	width: 15px;\n"
-"	background-color: green;\n"
+"	background-color: #ff3f34;\n"
 "}"));
         volume_slider->setOrientation(Qt::Horizontal);
-        jungo_label = new QLabel(centralwidget);
-        jungo_label->setObjectName("jungo_label");
-        jungo_label->setGeometry(QRect(10, 20, 141, 31));
+        video_container = new QGroupBox(centralwidget);
+        video_container->setObjectName("video_container");
+        video_container->setGeometry(QRect(9, 9, 891, 401));
+        video_container->setStyleSheet(QString::fromUtf8("border: 1px solid #4bcffa;\n"
+"color: #4bcffa;"));
+        progress_slider = new QSlider(centralwidget);
+        progress_slider->setObjectName("progress_slider");
+        progress_slider->setGeometry(QRect(80, 440, 751, 22));
+        progress_slider->setStyleSheet(QString::fromUtf8("QSlider::groove:horizontal{\n"
+"	height: 2px;\n"
+"	width: 750;\n"
+"	background-color: #ffdd59;\n"
+"}\n"
+"QSlider::handle:horizontal{\n"
+"	height: 2px;\n"
+"	width: 25px;\n"
+"	border-radius: 15%;\n"
+"	background-color: #ff3f34;\n"
+"}"));
+        progress_slider->setOrientation(Qt::Horizontal);
+        video_current_time_label = new QLabel(centralwidget);
+        video_current_time_label->setObjectName("video_current_time_label");
+        video_current_time_label->setGeometry(QRect(40, 440, 31, 21));
         QFont font;
-        font.setFamilies({QString::fromUtf8("Bahnschrift Condensed")});
-        font.setPointSize(15);
+        font.setFamilies({QString::fromUtf8("Bahnschrift Light")});
+        font.setPointSize(8);
         font.setBold(false);
-        jungo_label->setFont(font);
-        jungo_label->setStyleSheet(QString::fromUtf8("color: white;\n"
-"background-color: red;\n"
-""));
-        jungo_label->setFrameShape(QFrame::Panel);
-        jungo_label->setFrameShadow(QFrame::Raised);
-        jungo_label->setLineWidth(4);
-        jungo_label->setMidLineWidth(6);
-        jungo_label->setAlignment(Qt::AlignCenter);
-        jungo_label->setWordWrap(false);
+        video_current_time_label->setFont(font);
+        video_current_time_label->setStyleSheet(QString::fromUtf8("color: #d2dae2;"));
+        video_end_time_label = new QLabel(centralwidget);
+        video_end_time_label->setObjectName("video_end_time_label");
+        video_end_time_label->setGeometry(QRect(840, 440, 31, 21));
+        video_end_time_label->setFont(font);
+        video_end_time_label->setStyleSheet(QString::fromUtf8("color: #d2dae2;"));
         video_title_label = new QLabel(centralwidget);
         video_title_label->setObjectName("video_title_label");
-        video_title_label->setGeometry(QRect(30, 410, 851, 21));
+        video_title_label->setGeometry(QRect(20, 420, 881, 21));
         QFont font1;
         font1.setFamilies({QString::fromUtf8("Bahnschrift Light")});
-        font1.setPointSize(11);
+        font1.setPointSize(8);
         font1.setBold(true);
         video_title_label->setFont(font1);
-        video_title_label->setStyleSheet(QString::fromUtf8("color: white;"));
+        video_title_label->setStyleSheet(QString::fromUtf8("color: rgb(143, 149, 154);\n"
+"border: transparent;"));
+        video_title_label->setAlignment(Qt::AlignCenter);
         MainWindow->setCentralWidget(centralwidget);
+        video_container->raise();
+        horizontalLayoutWidget->raise();
+        horizontalLayoutWidget_2->raise();
+        volume_button->raise();
+        volume_slider->raise();
+        progress_slider->raise();
+        video_current_time_label->raise();
+        video_end_time_label->raise();
+        video_title_label->raise();
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 905, 26));
-        menubar->setStyleSheet(QString::fromUtf8("background-color: grey;"));
+        menubar->setGeometry(QRect(0, 0, 909, 26));
+        menubar->setStyleSheet(QString::fromUtf8("background-color: #d2dae2;\n"
+"color: #1e272e;"));
         menu_Browse = new QMenu(menubar);
         menu_Browse->setObjectName("menu_Browse");
         MainWindow->setMenuBar(menubar);
@@ -260,8 +276,10 @@ public:
         settings_button->setText(QString());
         fullscreen_button->setText(QString());
         volume_button->setText(QString());
-        jungo_label->setText(QCoreApplication::translate("MainWindow", "JUNGO", nullptr));
-        video_title_label->setText(QCoreApplication::translate("MainWindow", "Kamve-Be-Kind-[Visualiser].mp4", nullptr));
+        video_container->setTitle(QString());
+        video_current_time_label->setText(QCoreApplication::translate("MainWindow", "00:00", nullptr));
+        video_end_time_label->setText(QCoreApplication::translate("MainWindow", "00:00", nullptr));
+        video_title_label->setText(QCoreApplication::translate("MainWindow", "Kamve-Be-Kind-[Visualiser]", nullptr));
         menu_Browse->setTitle(QCoreApplication::translate("MainWindow", "&Browse", nullptr));
     } // retranslateUi
 
