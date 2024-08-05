@@ -26,6 +26,9 @@ public:
     ~MainWindow();
 
 private slots:
+    void durationChanged(qint64 duration);
+    void positionChanged(qint64 position);
+
     void on_progress_slider_sliderMoved(int position);
 
     void on_volume_slider_sliderMoved(int position);
@@ -52,7 +55,8 @@ private:
     QVideoWidget *video_Widget;
     QAudioOutput *audioOutput;
 
-    qint64 mDuration;
+    qint64 video_Duration;
+    void updateDuration(qint64 duration);
     bool is_Paused = true;
     bool is_Muted = false;
 };

@@ -71,7 +71,8 @@ public:
 "	height: 50px;\n"
 "	width: 50px;\n"
 "	border-radius: 25px;\n"
-"	background-color: #d2dae2;\n"
+"	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(174, 174, 174, 255), stop:0.927885 rgba(255, 94, 87, 255));\n"
+"\n"
 "}\n"
 "\n"
 "QPushButton:hover{\n"
@@ -89,7 +90,8 @@ public:
 "	height: 50px;\n"
 "	width: 50px;\n"
 "	border-radius: 25px;\n"
-"	background-color: #d2dae2;\n"
+"	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(174, 174, 174, 255), stop:0.927885 rgba(255, 94, 87, 255));\n"
+"\n"
 "}\n"
 "\n"
 "QPushButton:hover{\n"
@@ -107,7 +109,8 @@ public:
 "	height: 50px;\n"
 "	width: 50px;\n"
 "	border-radius: 25px;\n"
-"	background-color: #d2dae2;\n"
+"	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(174, 174, 174, 255), stop:0.927885 rgba(255, 94, 87, 255));\n"
+"\n"
 "}\n"
 "\n"
 "QPushButton:hover{\n"
@@ -131,7 +134,8 @@ public:
 "	height: 50px;\n"
 "	width: 50px;\n"
 "	border-radius: 25px;\n"
-"	background-color: #d2dae2;\n"
+"	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(174, 174, 174, 255), stop:0.927885 rgba(255, 94, 87, 255));\n"
+"\n"
 "}\n"
 "\n"
 "QPushButton:hover{\n"
@@ -150,7 +154,8 @@ public:
 "	height: 50px;\n"
 "	width: 50px;\n"
 "	border-radius: 25px;\n"
-"	background-color: #d2dae2;\n"
+"	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(174, 174, 174, 255), stop:0.927885 rgba(255, 94, 87, 255));\n"
+"\n"
 "}\n"
 "\n"
 "QPushButton:hover{\n"
@@ -170,7 +175,8 @@ public:
 "	height: 50px;\n"
 "	width: 50px;\n"
 "	border-radius: 25px;\n"
-"	background-color: #d2dae2;\n"
+"	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(174, 174, 174, 255), stop:0.927885 rgba(255, 94, 87, 255));\n"
+"\n"
 "}\n"
 "\n"
 "QPushButton:hover{\n"
@@ -181,36 +187,37 @@ public:
 "}		"));
         volume_slider = new QSlider(centralwidget);
         volume_slider->setObjectName("volume_slider");
-        volume_slider->setGeometry(QRect(100, 490, 160, 22));
+        volume_slider->setGeometry(QRect(90, 490, 151, 22));
         volume_slider->setStyleSheet(QString::fromUtf8("QSlider::groove:horizontal{\n"
-"	height: 10px;\n"
+"	height: 3px;\n"
 "	width: 150px;\n"
-"	background-color: #d2dae2;\n"
+"	background-color: #808e9b;\n"
 "}\n"
 "QSlider::handle:horizontal{\n"
-"	height: 10px;\n"
-"	width: 15px;\n"
+"	margin: -15px 0px;\n"
+"	height: 20px;\n"
+"	width: 10px;\n"
 "	background-color: #ff3f34;\n"
 "}"));
         volume_slider->setOrientation(Qt::Horizontal);
         video_container = new QGroupBox(centralwidget);
         video_container->setObjectName("video_container");
         video_container->setGeometry(QRect(9, 9, 891, 401));
-        video_container->setStyleSheet(QString::fromUtf8("border: 1px solid #4bcffa;\n"
-"color: #4bcffa;"));
+        video_container->setStyleSheet(QString::fromUtf8("color: #4bcffa;\n"
+"border: transparent;"));
         progress_slider = new QSlider(centralwidget);
         progress_slider->setObjectName("progress_slider");
         progress_slider->setGeometry(QRect(80, 440, 751, 22));
         progress_slider->setStyleSheet(QString::fromUtf8("QSlider::groove:horizontal{\n"
 "	height: 2px;\n"
 "	width: 750;\n"
-"	background-color: #ffdd59;\n"
+"	background-color: #808e9b;\n"
 "}\n"
 "QSlider::handle:horizontal{\n"
 "	height: 2px;\n"
 "	width: 25px;\n"
 "	border-radius: 15%;\n"
-"	background-color: #ff3f34;\n"
+"	background-color: #d2dae2;\n"
 "}"));
         progress_slider->setOrientation(Qt::Horizontal);
         video_current_time_label = new QLabel(centralwidget);

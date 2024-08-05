@@ -23,6 +23,11 @@ MainWindow::MainWindow(QWidget *parent)
     ui->volume_slider->setMaximum(100);
     ui->volume_slider->setValue(50);
 
+    connect(video_Player, &QMediaPlayer::durationChanged, this, &MainWindow::durationChanged);
+    connect(video_Player, &QMediaPlayer::positionChanged, this, &MainWindow::positionChanged);
+
+    ui->progress_slider->setRange(0, video_Player->duration()/1000);
+
 }
 
 MainWindow::~MainWindow()
@@ -30,6 +35,33 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::durationChanged(qint64 duration)
+{
+    video_Duration = duration / 1000;
+    ui->progress_slider->setMaximum(duration);
+}
+
+void MainWindow::positionChanged(qint64 position)
+{
+    if (!ui->progress_slider->isSliderDown()){
+        ui->progress_slider->setValue( position / 1000);
+    }
+    updateDuration(position / 1000);
+}
+
+void MainWindow::updateDuration(qint64 uDuration)
+{
+    if (uDuration || video_Duration)
+    {
+        QTime current_Time( (uDuration/3600)%60, (uDuration/60)%60, (uDuration*1000)%1000 );
+        QTime total_Time( (video_Duration/3600)%60, (video_Duration/60)%60, (video_Duration*1000)%1000 );
+        QString time_Format = "hh:mm:ss";
+
+        ui->video_current_time_label->setText(current_Time.toString(time_Format));
+        ui->video_end_time_label->setText(total_Time.toString(time_Format));
+    }
+
+}
 void MainWindow::on_actionOpen_Files_triggered()
 {
     QString FileName = QFileDialog::getOpenFileName(this, tr("Select Video File"),"",tr("Files (*.MP4)"));
@@ -44,23 +76,24 @@ void MainWindow::on_actionOpen_Files_triggered()
     video_Widget->setVisible(true);
     video_Widget->show();
 
+
 }
 
 void MainWindow::on_progress_slider_sliderMoved(int position)
 {
-
+    video_Player->setPosition(position);
 }
 
 
 void MainWindow::on_volume_slider_sliderMoved(int position)
 {
-
+    audioOutput->setVolume(position);
 }
 
 
 void MainWindow::on_volume_slider_valueChanged(int value)
 {
-    audioOutput->setVolume(value);
+    //audioOutput->setVolume(value);
 }
 
 

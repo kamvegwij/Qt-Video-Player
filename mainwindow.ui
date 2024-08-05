@@ -35,7 +35,8 @@
 	height: 50px;
 	width: 50px;
 	border-radius: 25px;
-	background-color: #d2dae2;
+	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(174, 174, 174, 255), stop:0.927885 rgba(255, 94, 87, 255));
+
 }
 
 QPushButton:hover{
@@ -57,7 +58,8 @@ QPushButton:hover{
 	height: 50px;
 	width: 50px;
 	border-radius: 25px;
-	background-color: #d2dae2;
+	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(174, 174, 174, 255), stop:0.927885 rgba(255, 94, 87, 255));
+
 }
 
 QPushButton:hover{
@@ -79,7 +81,8 @@ QPushButton:hover{
 	height: 50px;
 	width: 50px;
 	border-radius: 25px;
-	background-color: #d2dae2;
+	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(174, 174, 174, 255), stop:0.927885 rgba(255, 94, 87, 255));
+
 }
 
 QPushButton:hover{
@@ -113,7 +116,8 @@ QPushButton:hover{
 	height: 50px;
 	width: 50px;
 	border-radius: 25px;
-	background-color: #d2dae2;
+	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(174, 174, 174, 255), stop:0.927885 rgba(255, 94, 87, 255));
+
 }
 
 QPushButton:hover{
@@ -138,7 +142,8 @@ QPushButton:hover{
 	height: 50px;
 	width: 50px;
 	border-radius: 25px;
-	background-color: #d2dae2;
+	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(174, 174, 174, 255), stop:0.927885 rgba(255, 94, 87, 255));
+
 }
 
 QPushButton:hover{
@@ -172,7 +177,8 @@ QPushButton:hover{
 	height: 50px;
 	width: 50px;
 	border-radius: 25px;
-	background-color: #d2dae2;
+	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(174, 174, 174, 255), stop:0.927885 rgba(255, 94, 87, 255));
+
 }
 
 QPushButton:hover{
@@ -189,21 +195,22 @@ QPushButton:hover{
    <widget class="QSlider" name="volume_slider">
     <property name="geometry">
      <rect>
-      <x>100</x>
+      <x>90</x>
       <y>490</y>
-      <width>160</width>
+      <width>151</width>
       <height>22</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">QSlider::groove:horizontal{
-	height: 10px;
+	height: 3px;
 	width: 150px;
-	background-color: #d2dae2;
+	background-color: #808e9b;
 }
 QSlider::handle:horizontal{
-	height: 10px;
-	width: 15px;
+	margin: -15px 0px;
+	height: 20px;
+	width: 10px;
 	background-color: #ff3f34;
 }</string>
     </property>
@@ -221,8 +228,8 @@ QSlider::handle:horizontal{
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">border: 1px solid #4bcffa;
-color: #4bcffa;</string>
+     <string notr="true">color: #4bcffa;
+border: transparent;</string>
     </property>
     <property name="title">
      <string/>
@@ -241,13 +248,13 @@ color: #4bcffa;</string>
      <string notr="true">QSlider::groove:horizontal{
 	height: 2px;
 	width: 750;
-	background-color: #ffdd59;
+	background-color: #808e9b;
 }
 QSlider::handle:horizontal{
 	height: 2px;
 	width: 25px;
 	border-radius: 15%;
-	background-color: #ff3f34;
+	background-color: #d2dae2;
 }</string>
     </property>
     <property name="orientation">
@@ -257,9 +264,9 @@ QSlider::handle:horizontal{
    <widget class="QLabel" name="video_current_time_label">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>20</x>
       <y>440</y>
-      <width>31</width>
+      <width>51</width>
       <height>21</height>
      </rect>
     </property>
@@ -274,7 +281,7 @@ QSlider::handle:horizontal{
      <string notr="true">color: #d2dae2;</string>
     </property>
     <property name="text">
-     <string>00:00</string>
+     <string>00:00:00</string>
     </property>
    </widget>
    <widget class="QLabel" name="video_end_time_label">
@@ -282,7 +289,7 @@ QSlider::handle:horizontal{
      <rect>
       <x>840</x>
       <y>440</y>
-      <width>31</width>
+      <width>61</width>
       <height>21</height>
      </rect>
     </property>
@@ -297,7 +304,7 @@ QSlider::handle:horizontal{
      <string notr="true">color: #d2dae2;</string>
     </property>
     <property name="text">
-     <string>00:00</string>
+     <string>00:00:00</string>
     </property>
    </widget>
    <widget class="QLabel" name="video_title_label">
