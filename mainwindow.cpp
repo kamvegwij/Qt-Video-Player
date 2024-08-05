@@ -25,7 +25,6 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(video_Player, &QMediaPlayer::durationChanged, this, &MainWindow::durationChanged);
     connect(video_Player, &QMediaPlayer::positionChanged, this, &MainWindow::positionChanged);
-
     ui->progress_slider->setRange(0, video_Player->duration()/1000);
 
 }
@@ -34,11 +33,25 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+void MainWindow::on_actionOpen_Files_triggered()
+{
+    QString FileName = QFileDialog::getOpenFileName(this, tr("Select Video File"),"",tr("Files (*.MP4)"));
+    QFileInfo File(FileName);
+    ui->video_title_label->setText(File.fileName());
+
+    video_Widget = new QVideoWidget();
+    video_Widget->setGeometry(5, 5, ui->video_container->width() - 10, ui->video_container->height() - 10);
+    video_Widget->setParent(ui->video_container);
+    video_Player->setVideoOutput(video_Widget);
+    video_Player->setSource(QUrl(FileName));
+    video_Widget->setVisible(true);
+    video_Widget->show();
+}
 
 void MainWindow::durationChanged(qint64 duration)
 {
     video_Duration = duration / 1000;
-    ui->progress_slider->setMaximum(duration);
+    ui->progress_slider->setMaximum(video_Duration);
 }
 
 void MainWindow::positionChanged(qint64 position)
@@ -60,30 +73,21 @@ void MainWindow::updateDuration(qint64 uDuration)
         ui->video_current_time_label->setText(current_Time.toString(time_Format));
         ui->video_end_time_label->setText(total_Time.toString(time_Format));
     }
-
-}
-void MainWindow::on_actionOpen_Files_triggered()
-{
-    QString FileName = QFileDialog::getOpenFileName(this, tr("Select Video File"),"",tr("Files (*.MP4)"));
-    QFileInfo File(FileName);
-    ui->video_title_label->setText(File.fileName());
-
-    video_Widget = new QVideoWidget();
-    video_Widget->setGeometry(5, 5, ui->video_container->width() - 10, ui->video_container->height() - 10);
-    video_Widget->setParent(ui->video_container);
-    video_Player->setVideoOutput(video_Widget);
-    video_Player->setSource(QUrl(FileName));
-    video_Widget->setVisible(true);
-    video_Widget->show();
-
-
+    else
+    {
+        ui->play_button->setIcon(style()->standardIcon(QStyle::SP_MediaPlay));
+    }
 }
 
 void MainWindow::on_progress_slider_sliderMoved(int position)
 {
-    video_Player->setPosition(position);
+    video_Player->setPosition(position * 1000);
 }
 
+void MainWindow::on_progress_slider_valueChanged(int value)
+{
+    //
+}
 
 void MainWindow::on_volume_slider_sliderMoved(int position)
 {
@@ -128,13 +132,15 @@ void MainWindow::on_play_button_clicked()
 
 void MainWindow::on_rewind_button_clicked()
 {
-
+    ui->progress_slider->setValue(ui->progress_slider->value() - 10);
+    video_Player->setPosition(ui->progress_slider->value() * 1000);
 }
 
 
 void MainWindow::on_forward_button_clicked()
 {
-
+    ui->progress_slider->setValue(ui->progress_slider->value() + 10);
+    video_Player->setPosition(ui->progress_slider->value() * 1000);
 }
 
 
@@ -148,3 +154,4 @@ void MainWindow::on_fullscreen_button_clicked()
 {
     QMessageBox::information(0, "Important", "Fullscreen mode currently unavailable");
 }
+

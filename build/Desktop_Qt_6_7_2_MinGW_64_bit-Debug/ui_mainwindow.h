@@ -222,7 +222,7 @@ public:
         progress_slider->setOrientation(Qt::Horizontal);
         video_current_time_label = new QLabel(centralwidget);
         video_current_time_label->setObjectName("video_current_time_label");
-        video_current_time_label->setGeometry(QRect(40, 440, 31, 21));
+        video_current_time_label->setGeometry(QRect(20, 440, 51, 21));
         QFont font;
         font.setFamilies({QString::fromUtf8("Bahnschrift Light")});
         font.setPointSize(8);
@@ -231,7 +231,7 @@ public:
         video_current_time_label->setStyleSheet(QString::fromUtf8("color: #d2dae2;"));
         video_end_time_label = new QLabel(centralwidget);
         video_end_time_label->setObjectName("video_end_time_label");
-        video_end_time_label->setGeometry(QRect(840, 440, 31, 21));
+        video_end_time_label->setGeometry(QRect(840, 440, 61, 21));
         video_end_time_label->setFont(font);
         video_end_time_label->setStyleSheet(QString::fromUtf8("color: #d2dae2;"));
         video_title_label = new QLabel(centralwidget);
@@ -284,8 +284,8 @@ public:
         fullscreen_button->setText(QString());
         volume_button->setText(QString());
         video_container->setTitle(QString());
-        video_current_time_label->setText(QCoreApplication::translate("MainWindow", "00:00", nullptr));
-        video_end_time_label->setText(QCoreApplication::translate("MainWindow", "00:00", nullptr));
+        video_current_time_label->setText(QCoreApplication::translate("MainWindow", "00:00:00", nullptr));
+        video_end_time_label->setText(QCoreApplication::translate("MainWindow", "00:00:00", nullptr));
         video_title_label->setText(QCoreApplication::translate("MainWindow", "Kamve-Be-Kind-[Visualiser]", nullptr));
         menu_Browse->setTitle(QCoreApplication::translate("MainWindow", "&Browse", nullptr));
     } // retranslateUi

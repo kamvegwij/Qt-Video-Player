@@ -49,6 +49,8 @@ private slots:
 
     void on_actionOpen_Files_triggered();
 
+    void on_progress_slider_valueChanged(int value);
+
 private:
     Ui::MainWindow *ui;
     QMediaPlayer *video_Player;
